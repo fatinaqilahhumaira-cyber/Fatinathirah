@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Majlis Pertunangan | Athirah & Hakim</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-cream: #FAF7F2;
+      --card-bg: #FFFFFF;
+      --primary: #4A3E39;
+      --accent-gold: #B8976C;
+      --accent-light: #F2E8DC;
+      --text-muted: #786F6A;
+      --border-color: #EBDDCF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-cream);
+      font-family: 'Montserrat', sans-serif;
+      color: var(--primary);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 24px 14px;
+    }
+
+    .invite-card {
+      background: var(--card-bg);
+      max-width: 440px;
+      width: 100%;
+      border-radius: 24px;
+      padding: 38px 24px;
+      box-shadow: 0 18px 40px rgba(74, 62, 57, 0.08);
+      border: 1px solid var(--border-color);
+      text-align: center;
+      position: relative;
+    }
+
+    .bismillah {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.25rem;
+      color: var(--accent-gold);
+      margin-bottom: 12px;
+      letter-spacing: 1px;
+    }
+
+    .subtitle-top {
+      font-size: 0.72rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent-gold);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+
+    .couple-names {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.85rem;
+      line-height: 1.25;
+      font-weight: 600;
+      color: var(--primary);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .ampersand {
+      font-family: 'Alex Brush', cursive;
+      font-size: 2.2rem;
+      color: var(--accent-gold);
+      display: block;
+      margin: 2px 0;
+      text-transform: none;
+    }
+
+    .divider {
+      width: 60px;
+      height: 1px;
+      background: var(--accent-gold);
+      margin: 20px auto;
+    }
+
+    .intro-text {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
+    /* Countdown */
+    .countdown-container {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    .time-box {
+      background: #FDFBF8;
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 10px 6px;
+      min-width: 65px;
+    }
+
+    .time-value {
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--primary);
+      display: block;
+    }
+
+    .time-label {
+      font-size: 0.62rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+
+    /* Event Details Box */
+    .event-details {
+      background: #FAF6F0;
+      border-radius: 16px;
+      padding: 20px 18px;
+      margin-bottom: 24px;
+      text-align: center;
+      border: 1px solid #F0E5D8;
+    }
+
+    .detail-item {
+      margin-bottom: 14px;
+    }
+
+    .detail-item:last-child {
+      margin-bottom: 0;
+    }
+
+    .detail-title {
+      font-size: 0.68rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: var(--accent-gold);
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .detail-content {
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: var(--primary);
+      line-height: 1.5;
+    }
+
+    /* Button Actions */
+    .btn-stack {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      padding: 12px;
+      border-radius: 30px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: #FFFFFF;
+    }
+
+    .btn-primary:hover {
+      background-color: #382E2A;
+    }
+
+    .btn-secondary-group {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--accent-light);
+    }
+
+    /* Modal Styling */
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.45);
+      justify-content: center;
+      align-items: center;
+      padding: 16px;
+      z-index: 100;
+    }
+
+    .modal-content {
+      background: #FFFFFF;
+      padding: 24px;
+      border-radius: 18px;
+      max-width: 380px;
+      width: 100%;
+      text-align: left;
+    }
+
+    .modal-header {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      margin-bottom: 12px;
+      color: var(--primary);
+    }
+
+    .input-field {
+      width: 100%;
+      padding: 10px 12px;
+      margin-bottom: 12px;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      outline: none;
+      font-family: inherit;
+    }
+
+    .input-field:focus {
+      border-color: var(--accent-gold);
+    }
+
+    .close-btn {
+      background: none;
+      border: none;
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      cursor: pointer;
+      margin-top: 10px;
+      display: block;
+      width: 100%;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <main class="invite-card">
+    <div class="bismillah">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div>
+    <div class="subtitle-top">Majlis Pertunangan</div>
+
+    <h1 class="couple-names">
+      Fatin Athirah Izzati
+      <span class="ampersand">&amp;</span>
+      Abdul Hakim Mujahid
+    </h1>
+
+    <div class="divider"></div>
+
+    <p class="intro-text">
+      Dengan penuh rasa kesyukuran, kami menjemput Dato' / Datin / Tuan / Puan / Encik / Cik sekeluarga hadir menyerikan majlis pertunangan kami.
+    </p>
+
+    <!-- Countdown Timer -->
+    <div class="countdown-container" id="timer">
+      <div class="time-box">
+        <span class="time-value" id="days">00</span>
+        <span class="time-label">Hari</span>
+      </div>
+      <div class="time-box">
+        <span class="time-value" id="hours">00</span>
+        <span class="time-label">Jam</span>
+      </div>
+      <div class="time-box">
+        <span class="time-value" id="minutes">00</span>
+        <span class="time-label">Minit</span>
+      </div>
+      <div class="time-box">
+        <span class="time-value" id="seconds">00</span>
+        <span class="time-label">Saat</span>
+      </div>
+    </div>
+
+    <!-- Details -->
+    <div class="event-details">
+      <div class="detail-item">
+        <div class="detail-title">Tarikh & Hari</div>
+        <div class="detail-content">8 November 2026 (Ahad)<br>11:30 Pagi – 4:00 Petang</div>
+      </div>
+      <div class="detail-item">
+        <div class="detail-title">Lokasi Majlis</div>
+        <div class="detail-content">
+          Lot 16258, Kg Tersusun AA Tin Tambahan,<br>
+          35600 Sungkai, Perak
+        </div>
+      </div>
+    </div>
+
+    <!-- Interactive Actions -->
+    <div class="btn-stack">
+      <button class="btn btn-primary" onclick="openRSVP()">Pengesahan Kehadiran (RSVP)</button>
+      
+      <div class="btn-secondary-group">
+        <a class="btn btn-outline" 
+           href="https://www.google.com/maps/search/?api=1&query=Lot+16258,+Kg+Tersusun+AA+Tin+Tambahan,+35600+Sungkai,+Perak" 
+           target="_blank" rel="noopener">Google Maps</a>
+        <a class="btn btn-outline" 
+           href="https://waze.com/ul?q=Lot%2016258,%20Kg%20Tersusun%20AA%20Tin%20Tambahan,%2035600%20Sungkai,%20Perak" 
+           target="_blank" rel="noopener">Waze</a>
+      </div>
+
+      <a class="btn btn-outline" id="calBtn" href="#" target="_blank">Simpan Ke Kalendar</a>
+    </div>
+  </main>
+
+  <!-- Modal RSVP -->
+  <div class="modal" id="rsvpModal">
+    <div class="modal-content">
+      <h2 class="modal-header">Pengesahan Kehadiran</h2>
+      <form onsubmit="submitRSVP(event)">
+        <input type="text" class="input-field" placeholder="Nama Tetamu" required />
+        <select class="input-field" required>
+          <option value="" disabled selected>Kehadiran</option>
+          <option value="Hadir">Akan Hadir</option>
+          <option value="Tidak">Tidak Dapat Hadir</option>
+        </select>
+        <input type="number" class="input-field" placeholder="Bilangan Pax / Tetamu" min="1" max="10" required />
+        <button type="submit" class="btn btn-primary">Hantar Jawapan</button>
+        <button type="button" class="close-btn" onclick="closeRSVP()">Batal</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Tarikh Majlis: 8 November 2026, 11:30 AM MYT
+    const targetDate = new Date(2026, 10, 8, 11, 30, 0).getTime();
+
+    function updateTimer() {
+      const now = new Date().getTime();
+      const difference = targetDate - now;
+
+      if (difference > 0) {
+        const d = Math.floor(difference / (1000 * 60 * 60 * 24));
+        const h = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((difference % (1000 * 60)) / 1000);
+
+        document.getElementById("days").innerText = d < 10 ? '0' + d : d;
+        document.getElementById("hours").innerText = h < 10 ? '0' + h : h;
+        document.getElementById("minutes").innerText = m < 10 ? '0' + m : m;
+        document.getElementById("seconds").innerText = s < 10 ? '0' + s : s;
+      }
+    }
+    setInterval(updateTimer, 1000);
+    updateTimer();
+
+    function openRSVP() {
+      document.getElementById("rsvpModal").style.display = "flex";
+    }
+    function closeRSVP() {
+      document.getElementById("rsvpModal").style.display = "none";
+    }
+    function submitRSVP(e) {
+      e.preventDefault();
+      alert("Terima kasih! Maklum balas kehadiran anda telah direkodkan.");
+      closeRSVP();
+    }
+
+    // Google Calendar Link generator
+    const calUrl = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
+      "&text=" + encodeURIComponent("Majlis Pertunangan Athirah & Hakim") +
+      "&dates=20261108T033000Z/20261108T080000Z" +
+      "&details=" + encodeURIComponent("Majlis Pertunangan Fatin Athirah Izzati & Abdul Hakim Mujahid") +
+      "&location=" + encodeURIComponent("Lot 16258, Kg Tersusun AA Tin Tambahan, 35600 Sungkai, Perak");
+    document.getElementById("calBtn").href = calUrl;
+  </script>
+</body>
+</html>
