@@ -277,7 +277,7 @@
       width: 100%;
       background: #FFFFFF;
       border-radius: 160px 160px 24px 24px;
-      padding: 42px 18px 35px 18px;
+      padding: 42px 14px 35px 14px;
       text-align: center;
       border: 1px solid rgba(191, 161, 95, 0.25);
       box-shadow: 
@@ -363,16 +363,18 @@
       margin-bottom: 18px;
     }
 
-    /* AYAT AL-QURAN DALAM 1 BARIS PENUH */
+    /* KETETAPAN 1 BARIS MUTLAK UNTUK AYAT AL-QURAN */
     .quran-verse {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 0.78rem;
-      white-space: nowrap;
+      font-size: clamp(0.68rem, 2.7vw, 0.82rem);
+      white-space: nowrap !important;
+      word-break: keep-all;
       color: #383333;
       margin-bottom: 6px;
       width: 100%;
       text-align: center;
+      display: block;
     }
     .quran-surah {
       font-family: 'Montserrat', sans-serif;
@@ -661,7 +663,7 @@
           AHAD &nbsp;|&nbsp; 08.11.2026
         </div>
 
-        <!-- Ayat Al-Quran (1 Baris Sahaja) -->
+        <!-- Ayat Al-Quran (1 Baris Penuh) -->
         <p class="quran-verse">
           "Dan kami telah menciptakan kamu berpasang-pasangan."
         </p>
@@ -711,15 +713,15 @@
           </div>
         </div>
 
-        <!-- Butang Navigasi (Pautan Terus ke Lokasi Sebenar Anda) -->
+        <!-- Navigation Buttons (Pautan Navigasi Terkini: UrmVfiQjYaqiZEhe8) -->
         <div class="nav-btn-row">
           <a class="action-btn btn-burgundy" 
-             href="https://maps.app.goo.gl/7oXvUyK6Lv1D2cmTA" 
+             href="https://maps.app.goo.gl/UrmVfiQjYaqiZEhe8" 
              target="_blank" rel="noopener">
             📍 Google Maps
           </a>
           <a class="action-btn btn-burgundy" 
-             href="https://maps.app.goo.gl/7oXvUyK6Lv1D2cmTA" 
+             href="https://maps.app.goo.gl/UrmVfiQjYaqiZEhe8" 
              target="_blank" rel="noopener">
             🚗 Waze
           </a>
@@ -772,7 +774,7 @@
       "&text=" + encodeURIComponent("Majlis Pertunangan Fatin & Hakim") +
       "&dates=20261108T030000Z/20261108T060000Z" +
       "&details=" + encodeURIComponent("Majlis Pertunangan Fatin Athirah Izzati & Abdul Hakim Mujahid.") +
-      "&location=" + encodeURIComponent("https://maps.app.goo.gl/7oXvUyK6Lv1D2cmTA");
+      "&location=" + encodeURIComponent("https://maps.app.goo.gl/UrmVfiQjYaqiZEhe8");
     document.getElementById('calBtn').href = calLink;
 
     const audio = document.getElementById('bgSong');
