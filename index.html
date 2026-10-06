@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>Majlis Pertunangan | Fatin & Hakim</title>
   
-  <!-- Open Graph Meta Tags untuk Paparan Kemas di WhatsApp / Media Sosial -->
   <meta property="og:title" content="Majlis Pertunangan Fatin & Hakim" />
   <meta property="og:description" content="Ahad, 8 November 2026 | Sungkai, Perak. Klik untuk membuka kad jemputan." />
   <meta property="og:type" content="website" />
@@ -364,14 +363,16 @@
       margin-bottom: 18px;
     }
 
+    /* AYAT AL-QURAN DALAM 1 BARIS PENUH */
     .quran-verse {
       font-family: 'Playfair Display', serif;
       font-style: italic;
-      font-size: 0.82rem;
-      line-height: 1.65;
+      font-size: 0.78rem;
+      white-space: nowrap;
       color: #383333;
-      max-width: 290px;
       margin-bottom: 6px;
+      width: 100%;
+      text-align: center;
     }
     .quran-surah {
       font-family: 'Montserrat', sans-serif;
@@ -458,6 +459,7 @@
       margin-bottom: 0;
     }
 
+    /* Navigation Buttons */
     .nav-btn-row {
       display: flex;
       gap: 8px;
@@ -553,7 +555,6 @@
 </head>
 <body>
 
-  <!-- Audio Source -->
   <audio id="bgSong" preload="auto">
     <source src="ARVIAN%20DWI%20-%20SATU%20SHAF%20DI%20BELAKANGKU%20(OFFICIAL%20LYRIC%20VIDEO).mp3" type="audio/mp3">
     <source src="ARVIAN DWI - SATU SHAF DI BELAKANGKU (OFFICIAL LYRIC VIDEO).mp3" type="audio/mp3">
@@ -591,7 +592,6 @@
     <span class="music-text" id="musicStatus">Lagu</span>
   </div>
 
-  <!-- Touch Petals Canvas -->
   <canvas id="petalCanvas"></canvas>
 
   <!-- INVITATION MAIN CONTAINER -->
@@ -661,7 +661,7 @@
           AHAD &nbsp;|&nbsp; 08.11.2026
         </div>
 
-        <!-- Quran Verse -->
+        <!-- Ayat Al-Quran (1 Baris Sahaja) -->
         <p class="quran-verse">
           "Dan kami telah menciptakan kamu berpasang-pasangan."
         </p>
@@ -711,7 +711,7 @@
           </div>
         </div>
 
-        <!-- Navigation Buttons (Pautan Baru: maps.app.goo.gl/7oXvUyK6Lv1D2cmTA) -->
+        <!-- Butang Navigasi (Pautan Terus ke Lokasi Sebenar Anda) -->
         <div class="nav-btn-row">
           <a class="action-btn btn-burgundy" 
              href="https://maps.app.goo.gl/7oXvUyK6Lv1D2cmTA" 
@@ -729,7 +729,7 @@
           📅 Simpan Ke Kalendar
         </a>
 
-        <!-- Hubungi Section (Encik Izzat Safwan & Puan Hajah Haffita) -->
+        <!-- Hubungi Section -->
         <div class="contacts-title">HUBUNGI</div>
         <div class="contact-grid">
           <a class="contact-card" href="https://wa.me/60109875942?text=Assalamualaikum,%20saya%20ingin%20bertanya%20mengenai%20Majlis%20Pertunangan%20Fatin%20%26%20Hakim" target="_blank" rel="noopener">
@@ -747,7 +747,6 @@
   </div>
 
   <script>
-    // Tarikh & Masa Majlis: 8 November 2026, 11:00 AM MYT
     const eventTime = new Date(2026, 10, 8, 11, 0, 0).getTime();
 
     function updateCountdown() {
@@ -769,7 +768,6 @@
     setInterval(updateCountdown, 1000);
     updateCountdown();
 
-    // Kalendar Google (11:00 AM hingga 2:00 PM)
     const calLink = "https://calendar.google.com/calendar/render?action=TEMPLATE" +
       "&text=" + encodeURIComponent("Majlis Pertunangan Fatin & Hakim") +
       "&dates=20261108T030000Z/20261108T060000Z" +
@@ -777,15 +775,14 @@
       "&location=" + encodeURIComponent("https://maps.app.goo.gl/7oXvUyK6Lv1D2cmTA");
     document.getElementById('calBtn').href = calLink;
 
-    // Tetapan Audio (Minit 1:28 sehingga 40 saat seterusnya)
     const audio = document.getElementById('bgSong');
     const musicBtn = document.getElementById('musicBtn');
     const musicText = document.getElementById('musicStatus');
     let isPlaying = false;
 
-    const startTime = 88;      // 1 min 28 saat
-    const duration = 40;       // 40 saat
-    const endTime = startTime + duration; // 128 saat
+    const startTime = 88;
+    const duration = 40;
+    const endTime = startTime + duration;
 
     audio.addEventListener('timeupdate', () => {
       if (audio.currentTime >= endTime) {
@@ -826,13 +823,11 @@
       }
     }
 
-    // Buka Sampul & Mainkan Lagu
     function openInvitation() {
       document.getElementById('gatefoldOverlay').classList.add('opened');
       playAudio();
     }
 
-    // Efek Kelopak Bunga Sentuhan
     const canvas = document.getElementById('petalCanvas');
     const ctx = canvas.getContext('2d');
     let width = canvas.width = window.innerWidth;
